@@ -1,0 +1,682 @@
+/*
+  ........CONTENTS.........
+  Helpers...........[SEC-0]
+  Main Page.........[SEC-1]
+  Navbar............[SEC-2]
+  Element Card......[SEC-3]
+  Demon Card........[SEC-4]
+  About Modal.......[SEC-5]
+  Queries...........[SEC-6]
+*/
+
+/* HELPERS [SEC-0] */
+
+:root {
+  --element-card-header-height: 3rem;
+  --element-card-triangle-height: 1.5rem;
+  --col-orange: rgb(247, 154, 0);
+  --col-orange-dark: rgb(212, 131, 0);
+  --col-green: rgb(112, 212, 38);
+  --col-green-dark: rgb(93, 175, 31);
+  --col-body-light: rgb(227, 227, 227);
+  --col-body-dark: rgb(205, 205, 205);
+  --border-glow-thin: -2px 0px 2px var(--col-green), 2px 0px 2px var(--col-green), 0px 2px 2px var(--col-green), 0px -2px 2px var(--col-green), 10px 10px 10px black;
+  --box-shadow-black: 10px 10px 10px black;
+  --col-red: rgb(206, 0, 0);
+  --col-red-dark: rgb(170, 0, 0);
+  --col-dark-gray: rgb(33, 33, 33);
+  --col-light-gray: rgb(156, 156, 156);
+  --col-gray: rgb(90, 90, 90);
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-generic {
+  font-weight: bold;
+}
+
+.btn-generic:hover, .btn-generic:focus {
+  cursor: pointer;
+  outline: none;
+}
+
+.btn-generic:active {
+  transform: scale(95%);
+}
+
+/* MAIN PAGE [SEC-1] */
+
+body {
+  background-color: var(--bs-body-color);
+}
+
+.loadingSpinner {
+  width: 5rem;
+  height: 5rem;
+}
+
+.loading-container {
+  color: var(--col-body-dark);
+}
+
+.dashboard-error {
+  background-color: black;
+  height: 360px;
+  justify-content: space-around;
+  font-size: 24px;
+}
+
+.dashboard-error-title {
+  color: var(--col-red);
+  font-weight: bold;
+}
+
+.first-visit-alert {
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  height: fit-content;
+  padding: 1rem 2rem;
+  background-color: var(--col-green);
+  color: black;
+  font-size: 125%;
+  font-weight: bold;
+  margin-top: 16px;
+}
+
+/* MAIN PAGE [SEC-2] */
+
+.navbar {
+  background-color: black;
+}
+
+.navbar-brand {
+  color: var(--col-orange);
+  font-weight: bolder;
+}
+
+.navbar-brand:hover {
+  color: var(--col-orange-dark);
+  cursor: pointer;
+}
+
+.navbar-link {
+  color: white;
+  background-color: transparent;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-bottom: 0px;
+}
+
+.navbar-link:focus, .navbar-link:hover, .navbar-link:active {
+  color: var(--col-green-dark);
+  outline: none;
+  border-color: var(--col-green-dark);
+}
+
+.navbar-link.active {
+  color: var(--col-green);
+  border-color: var(--col-green);
+}
+
+/* ELEMENT CARD [SEC-3] */
+
+.element-card {
+  justify-content: stretch;
+  margin: 16px 16px;
+  flex-grow: 1;
+  z-index: 1;
+  box-shadow: 10px 10px 5px black;
+  min-height: 340px;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-top: var(--element-card-triangle-height) solid transparent;
+  border-left: 2rem solid var(--col-orange);
+  border-bottom: var(--element-card-triangle-height) solid transparent;
+}
+
+.element-card-empty-space {
+  background-color: var(--col-body-light);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.element-card-header {
+  display: flex;
+  max-width: 100%;
+  background-color: black;
+}
+
+.element-card-title {
+  display: flex;
+  align-items: center;
+  height: var(--element-card-header-height);
+  width: 75%;
+  text-indent: 3rem;
+  background-color: var(--col-orange);
+  color: black;
+}
+
+.element-card-title-value {
+  margin: 0px;
+}
+
+.element-card-abilities {
+  display: flex;
+  width: 30%;
+  align-items: center;
+  justify-content: space-evenly;
+  font-weight: bold;
+}
+
+.element-card-abilities-label {
+  color: var(--col-orange);
+}
+
+.element-card-abilities-value {
+  color: var(--col-green);
+}
+
+.element-card-desc {
+  display: flex;
+  background-color: black;
+  min-height: var(--element-card-header-height);
+  border-bottom: 1px solid black;
+}
+
+.element-card-desc-label {
+  display: flex;
+  width: 25%;
+  align-items: center;
+  color: var(--col-orange);
+  justify-content: flex-start;
+  text-indent: 0.5em;
+}
+
+.element-card-desc-value {
+  display: flex;
+  width: 75%;
+  position: relative;
+  background-color: var(--col-body-dark);
+  border-end-start-radius: 40%;
+  justify-content: center;
+  align-items: center;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.element-card-body {
+  background-color: var(--col-body-light);
+  padding: 0.5rem 0px;
+}
+
+.element-card-body-skill {
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  align-items: center;
+}
+
+.element-card-body-skill img {
+  margin-right: 0.25em;
+  margin-top: 2px;
+}
+
+.element-card-body-row {
+  display: flex;
+  width: 80%;
+  border-top: 4px solid var(--col-body-dark);
+  padding: 8px 0px;
+  margin: auto;
+  justify-content: space-between;
+}
+
+.element-card-body-bg {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.element-card-body-row-active {
+  display: flex;
+  width: 95%;
+  background: linear-gradient(90deg, var(--col-red), white 5%, var(--col-red) 10%);
+  background-size: 200% 200%;
+  animation: anim-bg 1.3s linear infinite;
+  color: white;
+  font-size: larger;
+  border-top: none;
+  padding: 0px 0px 8px 0px;
+}
+
+.element-card-body-row-active:focus, .element-card-body-row-active:active {
+  outline: none;
+}
+
+.element-card-body-row-active .element-card-body-bg {
+  background-color: black;
+  color: white;
+  width: 100%;
+  height: 100%;
+  padding: 8px 1.5rem;
+}
+
+.element-card-body-row-active +.element-card-body-row {
+  border-top: none;
+}
+
+.element-card-body-row:first-child {
+  border-top: none;
+}
+
+.element-card-body-row-active img {
+  border: 1px solid white;
+  margin-top: 1px;
+}
+
+.element-card-body-demons {
+  text-align: end;
+}
+
+/* DEMONCARD [SEC-4] */
+
+.demon-card {
+  align-items: center;
+  margin: 8px 8px;
+  justify-content: stretch;
+  flex-grow: 1;
+  box-shadow: var(--box-shadow-black);
+  transition: width 0.25s ease-in;
+}
+
+.demon-card:hover, .demon-card:focus {
+  box-shadow: -5px 0px 5px var(--col-green), 5px 0px 5px var(--col-green), 0px 5px 5px var(--col-green), 0px -5px 5px var(--col-green), var(--box-shadow-black);
+}
+
+.demon-card-title {
+  display: flex;
+  padding: 0.5rem 0px;
+  background-color: black;
+  color: white;
+  font-weight: bolder;
+  width: 100%;
+  justify-content: center;
+}
+
+.demon-card-body {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.demon-card-body-left {
+  display: flex;
+  width: 25%;
+  height: 100%;
+  background-color: black;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+}
+
+.demon-card-edit-btn {
+  height: fit-content;
+  width: 125%;
+  left: 25%;
+  bottom: 3%;
+  position: absolute;
+}
+
+.btn-orange {
+  background-color: var(--col-orange);
+  border: 0;
+  padding: 16px 0px;
+}
+
+.btn-orange:hover, .btn-orange:focus {
+  background-color: var(--col-orange-dark);
+}
+
+.demon-card-body-right {
+  display: flex;
+  background-color: var(--col-body-dark);
+  width: 100%;
+}
+
+.demon-card-skills {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin-top: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.demon-card-skill {
+  width: 100%;
+  height: fit-content;
+  text-align: end;
+  color: black;
+  margin: 2px 0px;
+}
+
+.demon-card-skill-top {
+  width: 100%;
+  padding-right: 0.5rem;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  background-color: var(--col-body-light);
+  box-shadow: 1px 1px black;
+}
+
+.demon-card-skill-bottom {
+  width: 100%;
+  height: 6px;
+  display: flex;
+}
+
+.demon-card-skill-bottom-left {
+  width: 15%;
+  height: 100%;
+  border-top: 2px solid black;
+}
+
+.demon-card-skill-bottom-right {
+  background-color: var(--col-body-light);
+  width: 100%;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  box-shadow: 1px 1px black;
+}
+
+.demon-card-skill-label {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+.demon-card-skill-icon {
+  margin: 2px 0.25rem 0px;
+  height: 14px;
+  width: auto;
+}
+
+.demon-card.demon-card-editing {
+  align-items: center;
+  background-color: black;
+  box-shadow: var(--border-glow-thin);
+}
+
+.input-name {
+  text-align: center;
+  padding: 6px 0px;
+  width: 95%;
+  background-color: var(--col-body-light);
+  border: none;
+}
+
+.input-name:focus, .input-name:active, .input-skill-container-active {
+  outline: none;
+  box-shadow: -2px 0px 2px var(--col-green), 2px 0px 2px var(--col-green), 0px 2px 2px var(--col-green), 0px -2px 2px var(--col-green);
+}
+
+.input-skills {
+  display: flex;
+  width: 100%;
+  padding: 12px 24px;
+  flex-direction: column;
+  background-color: var(--col-body-dark);
+  margin-bottom: 0px;
+}
+
+.input-skill-container {
+  margin: 2px auto;
+  display: flex;
+  border: 2px solid black;
+  background-color: var(--col-body-light);
+  align-items: center;
+  padding-right: 4px;
+  width: 90%;
+}
+
+.input-skill:focus, .input-skill:active {
+  border: none;
+  outline: none;
+}
+
+.input-skill {
+  flex-grow: 1;
+  background-color: var(--col-body-light);
+  text-indent: 8px;
+  padding: 4px;
+  border: none;
+}
+
+.input-skill:first-child {
+  margin-top: 0px;
+}
+
+.input-skill:last-child {
+  margin-bottom: 0px;
+}
+
+.input-skill-container {
+  position: relative;
+}
+
+.input-select {
+  border: 1px solid black;
+  background-color: var(--col-body-light);
+  position: absolute;
+  width: 100%;
+  height: 128px;
+  top: 100%;
+  z-index: 5;
+  overflow-y: scroll;
+  padding: 0.5rem 1rem;
+}
+
+.input-select-option {
+  list-style: none;
+  margin: 0px;
+}
+
+.input-select-option:hover {
+  background-color: var(--col-body-dark);
+  cursor: pointer;
+}
+
+.btn-close:focus {
+  box-shadow: none !important;
+}
+
+.input-dropdown {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  opacity: 0.5;
+  padding: 0px;
+}
+
+.divider {
+  background-color: black;
+  opacity: 0.5;
+  margin: 0px 4px 0px 8px;
+  width: 1px;
+  height: 1.5rem;
+}
+
+.input-dropdown:hover {
+  cursor: pointer;
+  opacity: 0.75;
+}
+
+.input-dropdown-active {
+  opacity: 0.75;
+}
+
+.demon-card-editing-footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.input-btn-container {
+  width: 60%;
+  padding: 12px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.input-btn {
+  position: relative;
+  border: 0;
+  width: 96px;
+  height: 96px;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(0deg, var(--col-light-gray), var(--col-gray) 85%);
+  background-size: 125% 125%;
+  background-position-y: 50%;
+  border: 8px double transparent;
+}
+
+.input-btn span {
+  position: absolute;
+  top: 85%;
+  color: white;
+  text-shadow: -1px 0px black, 1px 0px black, 0px 1px black, 0px -1px black;
+  font-size: 1.25rem;
+}
+
+.input-btn:focus, .input-btn:hover, .input-btn:active {
+  background-image: none;
+  border: 8px double black;
+  background-color: var(--col-green);
+}
+
+.input-btn:focus span, .input-btn:hover span, .input-btn:active span {
+  color: var(--col-green);
+}
+
+.demon-card-editing-icon {
+  filter: invert(1);
+  width: 100%;
+  height: 100%;
+}
+
+.input-btn:focus .demon-card-editing-icon, .input-btn:hover .demon-card-editing-icon, .input-btn:active .demon-card-editing-icon {
+  filter: none;
+}
+
+.btn-remove-all {
+  height: fit-content;
+  padding: 16px 0px;
+  margin: 32px 0px;
+  border: 0px;
+  background-color: var(--col-red);
+  box-shadow: 2px 2px 5px black;
+  color: white;
+  text-shadow: 1px 0px black, -1px 0px black, 0px 1px black, 0px -1px black, 2px 2px 2px black;
+  text-align: center;
+}
+
+.btn-remove-all:focus, .btn-remove-all:hover, .btn-remove-all:active {
+  background-color: var(--col-red-dark);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.error-container {
+  color: var(--col-red);
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* ABOUT MODAL [SEC-5] */
+
+.modal-content {
+  background-color: black;
+}
+
+.modal-header {
+  background-color: var(--col-orange);
+  border-color: transparent;
+  padding: 0.5rem 1.5rem;
+}
+
+.modal-footer {
+  border: 1.5rem solid black;
+  border-top: 0px;
+  background-color: var(--col-body-light);
+}
+
+.modal-body {
+  background-color: var(--col-body-light);
+  border: 1.5rem solid black;
+  border-bottom: 0px;
+  text-indent: 1rem;
+  width: 100%;
+}
+
+.btn-modal-close {
+  width: 25%;
+  align-self: flex-end;
+  padding: 12px;
+  margin-right: 5%;
+}
+
+a, a:hover {
+  color: var(--col-green-dark);
+}
+
+/* QUERIES [SEC-6] */
+
+@keyframes anim-bg {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: 225%;
+  }
+}
+
+@media (max-width: 576px) {
+  .element-card-desc-label {
+    font-size: 14px;
+  }
+
+  .input-skill-container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .input-btn-container {
+    width: 100%;
+  }
+
+  .element-card {
+    margin: 16px 8px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1400px) {
+  .input-btn-container {
+    width: 80%;
+  }
+}
