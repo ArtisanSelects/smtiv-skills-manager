@@ -13,7 +13,7 @@ export default function AboutModal() {
                 <p>This app was designed to help players keep track of which of their demons know which skills so they can decide which to keep and which to discard when performing fusions.</p>
                 <p>Special thank you to the ever-helpful <a href="https://aqiu384.github.io/megaten-fusion-tool/smt4/demons">Megami Tensei Fusion Tools</a>, from which this app's list of skills and their descriptions were taken.</p>
                 <p>Interested in viewing this project's source code? See it here:</p>
-                <p><a className="text-center" href="https://github.com/ArtisanSelects/smtiv-skill-manager">https://github.com/ArtisanSelects/smtiv-skill-manager</a></p>
+                <p><a className="text-center" href="https://github.com/ArtisanSelects/smtiv-skills-manager">https://github.com/ArtisanSelects/smtiv-skills-manager</a></p>
               </div>
               <div className="modal-footer">
                 <button className="btn-modal-close btn-orange btn-generic" data-bs-dismiss="modal">Close</button>
